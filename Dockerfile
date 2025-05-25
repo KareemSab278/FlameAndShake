@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 10000
 
-ENV FLASK_APP=app.py  # <-- Use the correct Python filename
+ENV FLASK_APP=app.py
 ENV FLASK_RUN_PORT=10000
 ENV FLASK_ENV=production
 
