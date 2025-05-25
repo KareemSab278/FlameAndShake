@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #333;
+}
+
+header {
+  background: #d60027;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-family: 'Segoe UI', cursive;
+}
+
+.hero {
+  background: url('https://via.placeholder.com/1000x300') center/cover;
+  height: 300px;
+}
+
+.section {
+  padding: 2rem;
+  text-align: center;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.product {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 200px;
+  padding: 1rem;
+}
+
+.product img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+form input, form button {
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+.categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      background: #ffcc00;
+      padding: 1rem;
+    }
+    .categories button {
+      background: #fff;
+      border: none;
+      color: #000;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .categories button:hover {
+      background: #f0f0f0;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .category-section {
+      display: none;
+    }
+    .category-section.active {
+      display: block;
+    }

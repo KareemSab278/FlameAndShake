@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flame & Shake</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Flame & Shake</h1>
+    <p>Fast Food | Eat-in and Take Away</p>
+    <p>Call: 01922 254052</p>
+  </header>
+
+  <nav class="categories">
+    {% set categories = ['gourmet burgers', 'classic burgers', 'wraps', 'peri peri', 'fries and sides', 'platters', 'kids menu', 'shakes', 'deserts', 'drinks'] %}
+    {% for cat in categories %}
+      <button onclick="showCategory('{{ cat|replace(' ', '_') }}')">{{ cat|capitalize }}</button>
+    {% endfor %}
+  </nav>
+
+  <section class="section">
+    
+
+    {% for category in categories %}
+      <div class="category-section" id="{{ category|replace(' ', '_') }}">
+        <h2>{{ category|capitalize }}</h2>
+        <div class="products">
+          {% for p in products %}
+            {% if p[4] == category %}
+              <div class="product">
+                <img src="{{ p[1] }}" alt="{{ p[0] }}">
+                <h4>{{ p[0] }}</h4>
+                <p>{{ p[3] }}</p>
+                <p><strong>£{{ '%.2f'|format(p[2]) }}</strong></p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+
+  <footer>
+    <p>Unit 1, St Paul's Building, St Paul's Street, Walsall, WS1 1NR</p>
+  </footer>
+
+  <script>
+    function showCategory(id) {
+      document.querySelectorAll('.category-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+
+    // Show the first category by default
+    document.addEventListener('DOMContentLoaded', () => {
+      const first = document.querySelector('.category-section');
+      if (first) first.classList.add('active');
+    });
+  </script>
+</body>
+</html>

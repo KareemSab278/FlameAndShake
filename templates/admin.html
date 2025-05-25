@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Admin - Flame & Shake</h1>
+  </header>
+
+  <section class="section">
+    <h2>Add New Product</h2>
+    <form method="POST" action="/admin/add">
+      <input type="text" name="name" placeholder="Product Name" required>
+      <input type="text" name="image" placeholder="Image URL" required>
+      <input type="number" step="0.01" name="price" placeholder="Price" required>
+      <textarea name="description" placeholder="Description" required></textarea>
+      <select name="category" required>
+        <option value="gourmet burgers">Gourmet Burgers</option>
+        <option value="classic burgers">Classic Burgers</option>
+        <option value="wraps">Wraps</option>
+        <option value="peri peri">Peri Peri</option>
+        <option value="fries and sides">Fries and Sides</option>
+        <option value="platters">Platters</option>
+        <option value="kids menu">Kids Menu</option>
+        <option value="shakes">Shakes</option>
+        <option value="deserts">Deserts</option>
+        <option value="drinks">Drinks</option>
+      </select>
+      <button type="submit">Add Product</button>
+    </form>
+
+    <h2>Existing Products</h2>
+    <div class="products">
+      {% for p in products %}
+      <div class="product">
+        <form method="POST" action="/admin/edit/{{ p[0] }}">
+          <input type="text" name="name" value="{{ p[1] }}" required>
+          <input type="text" name="image" value="{{ p[2] }}" required>
+          <input type="number" step="0.01" name="price" value="{{ p[3] }}" required>
+          <textarea name="description" required>{{ p[4] }}</textarea>
+          <select name="category" required>
+            <option value="gourmet burgers" {% if p[5] == 'gourmet burgers' %}selected{% endif %}>Gourmet Burgers</option>
+            <option value="classic burgers" {% if p[5] == 'classic burgers' %}selected{% endif %}>Classic Burgers</option>
+            <option value="wraps" {% if p[5] == 'wraps' %}selected{% endif %}>Wraps</option>
+            <option value="peri peri" {% if p[5] == 'peri peri' %}selected{% endif %}>Peri Peri</option>
+            <option value="fries and sides" {% if p[5] == 'fries and sides' %}selected{% endif %}>Fries and Sides</option>
+            <option value="platters" {% if p[5] == 'platters' %}selected{% endif %}>Platters</option>
+            <option value="kids menu" {% if p[5] == 'kids menu' %}selected{% endif %}>Kids Menu</option>
+            <option value="shakes" {% if p[5] == 'shakes' %}selected{% endif %}>Shakes</option>
+            <option value="deserts" {% if p[5] == 'deserts' %}selected{% endif %}>Deserts</option>
+            <option value="drinks" {% if p[5] == 'drinks' %}selected{% endif %}>Drinks</option>
+          </select>
+          <button type="submit">Update</button>
+        </form>
+        <form method="POST" action="/admin/delete/{{ p[0] }}">
+          <button type="submit">Delete</button>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+</body>
+</html>
