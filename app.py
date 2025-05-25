@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
-DB_PATH = 'products.db'
+DB_PATH = '/mnt/data/products.db'
 
 def init_db():
     with sqlite3.connect(DB_PATH) as conn:
