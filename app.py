@@ -7,6 +7,7 @@ import os
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 DB_PATH = '/mnt/data/products.db'
+# DB_PATH = 'products.db'
 
 #=============================================================
 
